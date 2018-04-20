@@ -41,7 +41,7 @@ library(eml2)
 emlFile <- "strix-pacific-northwest.xml"
 doc <- read_eml(emlFile)
 
-doc# Change creator to us
+# Change creator to us
 doc$dataset$creator <- set_responsibleParty("Matthew",  "Jones", email = "jones@nceas.ucsb.edu")
 
 # Change abstract to the better one we wrote
@@ -130,7 +130,7 @@ outputObj <- new("DataObject",
                filename=paste(getwd(), outputData, sep="/"))
 dp <- addMember(dp, outputObj, metadataObj)
 
-myAccessRules <- data.frame(subject=c("https://orcid.org/0000-0002-1642-628X", "https://orcid.org/0000-0002-9088-5767"), permission="changePermission") 
+myAccessRules <- data.frame(subject="http://orcid.org/0000-0003-0077-4738", permission="changePermission") 
 
 # Add the provenance relationships to the data package
 dp <- describeWorkflow(dp, sources=sourceObj, program=progObj, derivations=outputObj)
@@ -140,7 +140,7 @@ show(dp)
 
 Finally, we upload the package to the Testing server for the KNB.
 ```{r, eval=FALSE}
-packageId <- uploadDataPackage(d1c, dp, public=FALSE, accessRules=myAccessRules, quiet=FALSE)
+packageId <- uploadDataPackage(d1c, dp, public=TRUE, accessRules=myAccessRules, quiet=FALSE)
 ```
 
 This particular package contains the R script `filterSpecies.R`, the input 
