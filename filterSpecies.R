@@ -8,3 +8,5 @@ speciesData <- read.csv(system.file("extdata/sample.csv", package="dataone"))
 speciesData <- speciesData[speciesData$species=="MUSS",]
 outfile <- tempfile(pattern="filteredSpecies", fileext=".csv")
 write.csv(speciesData, file=outfile, row.names=FALSE)
+
+new awesome code goes here!
